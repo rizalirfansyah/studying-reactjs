@@ -1,7 +1,6 @@
 import Button from "../components/Elements/Button/index";
 import CardProduct from "../components/Fragments/CardProduct";
 import { Fragment, useEffect, useState, useRef } from "react";
-import { Fragment, useState, useEffect } from "react";
 import Counter from "../components/Fragments/Counter";
 
 const products = [
@@ -49,8 +48,7 @@ const ProductPage = () => {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart]);
-  const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
   }, []);
@@ -191,10 +189,9 @@ const ProductPage = () => {
           </table>
         </div>
       </div>
-      {/* <div className="mt-5 flex justify-center mb-5">
+      {/* < className="mt-5 flex justify-center mb-5">
       {/* <div className="mt-5 flex justify-center mb-5">
         <Counter></Counter>
-      </div> */}
       </div> */}
     </Fragment>
   );
