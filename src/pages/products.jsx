@@ -1,17 +1,19 @@
 // import Button from "../components/Elements/Button/index";
 import CardProduct from "../components/Fragments/CardProduct";
-import { Fragment, useEffect, useState, useRef } from "react";
+import { Fragment, useEffect, useState, useRef, useContext } from "react";
 import Counter from "../components/Fragments/Counter";
 import { getProducts } from "../services/product.service";
 // import { getUsername } from "../services/auth.service";
 import { useLogin } from "../hooks/useLogin";
 import TableCart from "../components/Fragments/TableCart";
 import Navbar from "../components/Layouts/Navbar";
+import { DarkMode } from "../context/DarkMode";
 
 const ProductPage = () => {
   // const [cart, setCart] = useState([]);
   // const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   // const username = useLogin();
   useLogin();
 
@@ -70,7 +72,10 @@ const ProductPage = () => {
 
   return (
     <Fragment>
-      <div className="flex justify-center py-5">
+      <Navbar />
+      <div
+        className={`flex justify-center py-5 ${isDarkMode && "bg-slate-900"}`}
+      >
         <div className="w-4/6 flex flex-wrap">
           {products.length > 0 &&
             products.map((product) => (
